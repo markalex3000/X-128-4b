@@ -19,62 +19,57 @@ inline void simple_error(string s)	// write ``error: s and exit program
 
 int main() {
 	int the_number{ 0 };
-	int upper_bound{ 0 };
+	int upper_bound{ 500 };
 	int lower_bound{ 0 };
-	char side;
+	int temp{ 0 };
+	char side = 'L';;
 
 	cout << "enter the number you want me to guess: ";
 	cin >> the_number;
 
 	//first question
-	cout << "Is the number less than 50? \n";
-	if (the_number < 50) 
-	{
-		cout << "- Yes, it seems your number (" << the_number << ") is less than 50.\n";
-		upper_bound = 49;
-		side = 'L';
-
-	}
-	else {
-		cout << "- No,  it seems your number (" << the_number << ") is at least 50.\n";
-		upper_bound = 100;
-		lower_bound = 50;
-		side = 'R';
-	}
 	while (upper_bound - lower_bound > 1) {
+//		keep_window_open();
+		if (side == 'L')
+		{
+			temp = (upper_bound - lower_bound) / 2;
+			upper_bound = upper_bound - temp;
+		}
+		else
+		{
+			temp = (upper_bound - lower_bound) / 2;
+			lower_bound = upper_bound;
+			upper_bound = lower_bound + temp;
+		}
 
 		if (side == 'L') {
-			cout << "Is the number less than " << upper_bound / 2 << "?\n";
-			if (the_number < upper_bound / 2) {
+			cout << "TL - Is the number less than  " << upper_bound << "?\n";
+			if (the_number < upper_bound) {
 				cout << "- Yes, it seems your number (" << the_number << ") is less than " <<
-					upper_bound / 2 << '\n';
-				upper_bound = upper_bound / 2;
+					upper_bound << '\n';
 				side = 'L';
 			}
 			else {
-				cout << "- No,  it seems your number (" << the_number << ") is at least "<<
-					upper_bound /2<< '\n';
-				lower_bound = upper_bound / 2;
+				cout << "TR - No,  it seems your number (" << the_number << ") at least "<<
+					upper_bound << '\n';
+
 				side = 'R';
 			}
 		}
 		else {
-			cout << "Is the number greater than " << upper_bound / 2 << "?\n";
-			if (the_number > upper_bound / 2) {
+			cout << "RR - Is the number greater than " << upper_bound << "?\n";
+			if (the_number > upper_bound) {
 				cout << "- Yes, it seems your number (" << the_number << ") is greater than " <<
-					upper_bound / 2 << '\n';
-				lower_bound = upper_bound / 2;
+					upper_bound << '\n';
 				side = 'R';
 			}
 			else {
-				cout << "- No,  it seems your number (" << the_number << ") is less than " <<
-					upper_bound / 2 << '\n';
-				upper_bound = upper_bound / 2;
+				cout << "RL - No,  it seems your number (" << the_number << ") is less than " <<
+					upper_bound << '\n';
 				side = 'L';
 
 			}
 		}
-		
 	}
 	cout << "Upper_bound is: " << upper_bound << '\n';
 	cout << "Lower_bound is: " << lower_bound << '\n';
@@ -82,5 +77,5 @@ int main() {
 	else cout<<"Your number (" << the_number << ") is: " <<upper_bound -1 << "\n";
 
 	keep_window_open();
-	}
+}
 
