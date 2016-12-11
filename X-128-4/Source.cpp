@@ -25,43 +25,52 @@ int main() {
 	int temp{ 0 };
 	char side = 'L';
 
-	cout << "enter the number you want me to guess: ";
-	cin >> the_number;
+	for (int i = lower_bound; i < upper_bound; i++)
+	{
+		the_number = i;
 
 
-	while (upper_bound - lower_bound > 1) {
 
-		if (side == 'L')
-		{
-			temp = (upper_bound - lower_bound) / 2;
-			test_number = upper_bound - temp;
-		}
-		else
-		{
-			temp = (test_number - lower_bound) / 2;
-			lower_bound = test_number;
-			test_number = upper_bound - temp;
-		}
+//		cout << "The number is  " << the_number << '\n';
 
+		while (upper_bound - lower_bound > 1) {
 
-		cout << "TL - Is the number less than  " << test_number << "?\n";
-		if (the_number < test_number) {
-			cout << "- Yes, it seems your number (" << the_number << ") is less than " <<
-				test_number << '\n';
-			side = 'L';
-			upper_bound = test_number;
-		}
-		else {
-			cout << "TR - No,  it seems your number (" << the_number << ") at least "<<
-				test_number << '\n';
-			side = 'R';
+			if (side == 'L')
+			{
+				temp = (upper_bound - lower_bound) / 2;
+				test_number = upper_bound - temp;
+			}
+			else
+			{
+				temp = (test_number - lower_bound) / 2;
+				lower_bound = test_number;
+				test_number = upper_bound - temp;
 			}
 
-	}
-	cout << "Upper_bound is: " << upper_bound << '\n';
-	cout << "Lower_bound is: " << lower_bound << '\n';
 
-	cout<<"Your number (" << the_number << ") is: " << upper_bound - 1 << "\n";
+//			cout << "TL - Is the number less than  " << test_number << "?\n";
+			if (the_number < test_number) {
+//				cout << "- Yes, it seems your number (" << the_number << ") is less than " <<
+					test_number << '\n';
+				side = 'L';
+				upper_bound = test_number;
+			}
+			else {
+//				cout << "TR - No,  it seems your number (" << the_number << ") at least " <<
+					test_number << '\n';
+				side = 'R';
+			}
+
+		}
+//		cout << "Upper_bound is: " << upper_bound << '\n';
+//		cout << "Lower_bound is: " << lower_bound << '\n';
+
+		cout << "Your number (" << the_number << ") is: " << upper_bound - 1 << "\n";
+
+		upper_bound = 100;
+		lower_bound = 0;
+		test_number = 0;
+	}
 
 	keep_window_open();
 }
