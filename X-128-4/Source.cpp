@@ -19,7 +19,7 @@ inline void simple_error(string s)	// write ``error: s and exit program
 
 int main() {
 	int the_number{ 0 };
-	int upper_bound{ 500 };
+	int upper_bound{ 30 };
 	int lower_bound{ 0 };
 	int temp{ 0 };
 	char side = 'L';;
